@@ -1,0 +1,17 @@
+CREATE TABLE `permissions` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `permission_name` varchar(128) NOT NULL DEFAULT '',
+  `permission_description` mediumtext,
+  `info` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_permission` (`permission_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `permissions_roles` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `permission_id` int(11) unsigned NOT NULL,
+  `role_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_permission_role` (`permission_id`,`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

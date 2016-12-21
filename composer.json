@@ -1,0 +1,38 @@
+{
+	"name":        "germania-kg/permissions",
+
+	"type":        "library",
+	"license":     "MIT",
+
+	"authors": [
+		{
+			"name":  "Carsten Witt",
+			"email": "carstenwitt@germania-kg.de",
+			"role":  "Developer"
+		}
+	],
+
+  "autoload": {
+      "psr-4": {
+          "Germania\\Permissions\\": "src/"
+      }
+  },
+
+  "autoload-dev": {
+      "psr-4": {
+      	"tests\\": "tests/default",
+      	"mysql\\": "tests/mysql"
+      }
+  },
+
+	"require": {
+		"psr/log": "^1.0"
+	},
+
+	"require-dev": {
+		  "monolog/monolog": "^1.16",
+			"satooshi/php-coveralls": "^1.0",
+			"phpunit/phpunit": "^5.2",
+			"phpunit/dbunit": "^2.0"
+	}
+}
