@@ -12,7 +12,7 @@
 $ composer require germania-kg/permissions
 ```
 
-**MySQL users** may install the tables *permissions* and *permissions\_roles *using `install.sql.txt` in `sql/` directory.
+**MySQL users** may install the tables *permissions* and *permissions\_roles* using `install.sql.txt` in `sql/` directory.
 
 
 ##Usage
