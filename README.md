@@ -1,6 +1,6 @@
 # Germania\Permissions
 
-
+[![Build Status](https://travis-ci.org/GermaniaKG/Permissions.svg?branch=master)](https://travis-ci.org/GermaniaKG/Permissions)
 [![Build Status](https://travis-ci.org/GermaniaKG/Permissions.svg?branch=master)](https://travis-ci.org/GermaniaKG/Permissions)
 [![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/?branch=master)
