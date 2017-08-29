@@ -1,4 +1,4 @@
-#Germania\Permissions
+# Germania\Permissions
 
 
 [![Build Status](https://travis-ci.org/GermaniaKG/Permissions.svg?branch=master)](https://travis-ci.org/GermaniaKG/Permissions)
@@ -6,7 +6,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/?branch=master)
 
 
-##Installation
+## Installation
 
 ```bash
 $ composer require germania-kg/permissions
@@ -15,7 +15,7 @@ $ composer require germania-kg/permissions
 **MySQL users** may install the tables *permissions* and *permissions\_roles* using `install.sql.txt` in `sql/` directory.
 
 
-##Usage
+## Usage
 
 ```php
 <?php
@@ -63,7 +63,7 @@ print_r( $acl );
 
 
 
-##Development and Testing
+## Development and Testing
 
 First, grab your clone:
 
