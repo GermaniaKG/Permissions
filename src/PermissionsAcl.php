@@ -63,7 +63,7 @@ class PermissionsAcl
 
 
     /**
-     * @return array          Callable Authorization instance
+     * @return array
      */
     public function __invoke(  )
     {
