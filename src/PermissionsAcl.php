@@ -17,7 +17,6 @@ class PermissionsAcl
      */
     public $logger;
 
-
     /**
      * @var string
      */
@@ -33,17 +32,18 @@ class PermissionsAcl
      */
     protected $separator = ",";
 
+
     /**
      * @param \PDO                 $pdo                      PDO instance
      * @param string               $permissions_table        Permissions table name
      * @param string               $permissions_roles_table  Permissions and roles assignments table
      * @param LoggerInterface|null $logger                   Optional: PSR-3 Logger
      */
-    public function __construct( \PDO $pdo, $permissions_table = null, $permissions_roles_table = null, LoggerInterface $logger = null )
+    public function __construct( \PDO $pdo, $permissions_table, $permissions_roles_table, LoggerInterface $logger = null )
     {
         // Prerequisites
-        $this->permissions_table = $permissions_table ?: $this->permissions_table;
-        $this->permissions_roles_table = $permissions_roles_table   ?: $this->permissions_roles_table;
+        $this->permissions_table       = $permissions_table;
+        $this->permissions_roles_table = $permissions_roles_table;
         $this->logger = $logger      ?: new NullLogger;
 
         // Read pages and allowed roles
