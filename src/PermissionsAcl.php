@@ -2,20 +2,18 @@
 namespace Germania\Permissions;
 
 use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 
 class PermissionsAcl
 {
 
+    use LoggerAwareTrait;
+
     /**
      * @var \PDOStatement
      */
     public $stmt;
-
-    /**
-     * @var LoggerInterface
-     */
-    public $logger;
 
     /**
      * @var string
@@ -41,10 +39,11 @@ class PermissionsAcl
      */
     public function __construct( \PDO $pdo, $permissions_table, $permissions_roles_table, LoggerInterface $logger = null )
     {
+        $this->setLogger( $logger ?: new NullLogger );
+
         // Prerequisites
         $this->permissions_table       = $permissions_table;
         $this->permissions_roles_table = $permissions_roles_table;
-        $this->logger = $logger      ?: new NullLogger;
 
         // Read pages and allowed roles
         $sql =  "SELECT
