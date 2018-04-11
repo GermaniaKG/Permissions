@@ -25,8 +25,7 @@ class PermissionsAclTest extends DatabaseTestCaseAbstract
 
         $pdo = $this->getPdo();
 
-
-        $sut = new PermissionsAcl( $pdo, null, null, $this->logger);
+        $sut = new PermissionsAcl( $pdo, "permissions", "permissions_roles", $this->logger);
         $acl = $sut();
         $this->assertInternalType("array", $acl);
         print_r($acl);

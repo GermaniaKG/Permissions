@@ -21,15 +21,14 @@ $ composer require germania-kg/permissions
 <?php
 use Germania\Permissions\PermissionsAcl;
 
-// Have your PDO and optional a PSR-3 Logger at ready
+// Have your PDO and optional a PSR-3 Logger at hand
 $pdo    = new PDO;
 $logger = new Monolog;
 
-$perms = new PermissionsAcl( $pdo );
-$perms = new PermissionsAcl( $pdo, null, null, $logger );
-
-// Use custom names for tables:
-$perms = new PermissionsAcl( $pdo, 'tasks', 'tasks_roles' );
+// Pass PDO and table names,
+// optionally with PSR-3 Logger
+$perms = new PermissionsAcl( $pdo, "permissions", "permissions_roles" );
+$perms = new PermissionsAcl( $pdo, "permissions", "permissions_roles", $logger );
 
 // Use Callable
 $acl = $perms();

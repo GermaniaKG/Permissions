@@ -2,10 +2,13 @@
 namespace Germania\Permissions;
 
 use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 
 class PermissionsAcl
 {
+
+    use LoggerAwareTrait;
 
     /**
      * @var \PDOStatement
@@ -13,25 +16,20 @@ class PermissionsAcl
     public $stmt;
 
     /**
-     * @var LoggerInterface
+     * @var string
      */
-    public $logger;
-
+    public $permissions_table = "permissions";
 
     /**
      * @var string
      */
-    public $permissions_table         = "permissions";
-
-    /**
-     * @var string
-     */
-    public $permissions_roles_table   = "permissions_roles";
+    public $permissions_roles_table = "permissions_roles";
 
     /**
      * @var Seperator string for roles in SELECT statement
      */
     protected $separator = ",";
+
 
     /**
      * @param \PDO                 $pdo                      PDO instance
@@ -39,12 +37,13 @@ class PermissionsAcl
      * @param string               $permissions_roles_table  Permissions and roles assignments table
      * @param LoggerInterface|null $logger                   Optional: PSR-3 Logger
      */
-    public function __construct( \PDO $pdo, $permissions_table = null, $permissions_roles_table = null, LoggerInterface $logger = null )
+    public function __construct( \PDO $pdo, $permissions_table, $permissions_roles_table, LoggerInterface $logger = null )
     {
+        $this->setLogger( $logger ?: new NullLogger );
+
         // Prerequisites
-        $this->permissions_table = $permissions_table ?: $this->permissions_table;
-        $this->permissions_roles_table = $permissions_roles_table   ?: $this->permissions_roles_table;
-        $this->logger = $logger      ?: new NullLogger;
+        $this->permissions_table       = $permissions_table;
+        $this->permissions_roles_table = $permissions_roles_table;
 
         // Read pages and allowed roles
         $sql =  "SELECT
@@ -63,7 +62,7 @@ class PermissionsAcl
 
 
     /**
-     * @return array          Callable Authorization instance
+     * @return array
      */
     public function __invoke(  )
     {
