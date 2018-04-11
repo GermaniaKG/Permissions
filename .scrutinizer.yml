@@ -66,9 +66,18 @@ build:
                             file: 'coverage'
                             format: 'php-clover'
 
-        hhvm:
-            environment:
-                php: hhvm
+
+        # 2018-04-11: Scrutinizer fails on this.
+        #
+        #     "Could not double `PDOStatement` and implement interfaces:"
+        #
+        # Since I do not use hhvm anyway,
+        # I am not willing to fix this *right now*.
+
+
+        # hhvm:
+        #     environment:
+        #         php: hhvm
 
 
 checks:
