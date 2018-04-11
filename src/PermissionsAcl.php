@@ -20,12 +20,12 @@ class PermissionsAcl
     /**
      * @var string
      */
-    public $permissions_table         = "permissions";
+    public $permissions_table = "permissions";
 
     /**
      * @var string
      */
-    public $permissions_roles_table   = "permissions_roles";
+    public $permissions_roles_table = "permissions_roles";
 
     /**
      * @var Seperator string for roles in SELECT statement
