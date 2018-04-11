@@ -34,7 +34,7 @@ class PermissionsAclTest extends \PHPUnit_Framework_TestCase
 
         $pdo = $pdo_mock->reveal();
 
-        $sut = new PermissionsAcl( $pdo, null, null, $this->logger);
+        $sut = new PermissionsAcl( $pdo, "permissions", "permissions_roles", $this->logger);
         $acl = $sut();
         $this->assertInternalType("array", $acl);
     }
