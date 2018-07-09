@@ -20,7 +20,7 @@ class PdoUpdatePermissionRolesTest extends DatabaseTestCaseAbstract
 
 
 
-    public function testInstantiation(  )
+    public function testUpdating(  )
     {
 
         $pdo = $this->getPdo();
