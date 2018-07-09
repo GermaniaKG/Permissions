@@ -54,6 +54,7 @@ class PdoAllPermissions implements \Countable, \IteratorAggregate
         $sql =  "SELECT
         -- Select name twice here because of UNIQUE
         P.permission_name AS name,
+        P.id,
         P.permission_name AS name,
         P.permission_description AS description,
         P.info AS info,
