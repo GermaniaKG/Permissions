@@ -31,8 +31,8 @@
 
 	"require-dev": {
 		  "monolog/monolog": "^1.16",
-			"php-coveralls/php-coveralls": "^2.0",
-			"phpunit/phpunit": "^5.7|6.0",
-			"phpunit/dbunit": "^2.0"
+      "php-coveralls/php-coveralls": "^2.0",
+      "phpunit/phpunit": "^5.7|^6.0",
+      "phpunit/dbunit": "^3.0"
 	}
 }
