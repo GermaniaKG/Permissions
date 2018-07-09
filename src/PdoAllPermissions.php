@@ -57,7 +57,7 @@ class PdoAllPermissions implements \Countable, \IteratorAggregate
         P.permission_name AS name,
         P.permission_description AS description,
         P.info AS info,
-        GROUP_CONCAT(Pmm.role_id SEPARATOR '{$this->separator}') AS assigned_roles
+        GROUP_CONCAT(Pmm.role_id ORDER BY role_id ASC SEPARATOR '{$this->separator}') AS assigned_roles
 
         FROM {$this->permissions_table} P
         LEFT JOIN {$this->permissions_roles_table} Pmm
