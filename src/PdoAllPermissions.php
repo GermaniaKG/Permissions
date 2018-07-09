@@ -4,8 +4,10 @@ namespace Germania\Permissions;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
+use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundException;
 
-class PdoAllPermissions implements \Countable, \IteratorAggregate
+class PdoAllPermissions implements \Countable, \IteratorAggregate, ContainerInterface
 {
 
     use LoggerAwareTrait;
@@ -54,6 +56,7 @@ class PdoAllPermissions implements \Countable, \IteratorAggregate
         $sql =  "SELECT
         -- Select name twice here because of UNIQUE
         P.permission_name AS name,
+        P.id,
         P.permission_name AS name,
         P.permission_description AS description,
         P.info AS info,
@@ -73,7 +76,30 @@ class PdoAllPermissions implements \Countable, \IteratorAggregate
         $this->permissions = $this->stmt->fetchAll( \PDO::FETCH_UNIQUE | \PDO::FETCH_ASSOC);
     }
 
+
     /**
+     * @inheritDoc
+     */
+    public function has( $name )
+    {
+        return array_key_exists($name, $this->permissions);
+    }
+
+
+    /**
+     * @inheritDoc
+     * @throws PermissionNotFoundException
+     */
+    public function get( $name )
+    {
+        if ($this->has($name))
+            return $this->permissions[ $name ];
+        throw new PermissionNotFoundException("There is no permission '$name'");
+    }
+
+
+    /**
+     * @inheritDoc
      * @return int
      */
     public function count()
