@@ -7,7 +7,7 @@ use Psr\Log\NullLogger;
 use Prophecy\Argument;
 
 
-class PermissionsAclTest extends \PHPUnit_Framework_TestCase
+class PermissionsAclTest extends \PHPUnit\Framework\TestCase
 {
 
     public $logger;
