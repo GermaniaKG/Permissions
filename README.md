@@ -1,9 +1,13 @@
-# Germania\Permissions
+# Germania KG · Permissions
 
-[![Build Status](https://travis-ci.org/GermaniaKG/Permissions.svg?branch=master)](https://travis-ci.org/GermaniaKG/Permissions)
-[![Build Status](https://travis-ci.org/GermaniaKG/Permissions.svg?branch=master)](https://travis-ci.org/GermaniaKG/Permissions)
-[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/?branch=master)
+
+[![Packagist](https://img.shields.io/packagist/v/germania-kg/permissions.svg?style=flat)](https://packagist.org/packages/germania-kg/permissions)
+[![PHP version](https://img.shields.io/packagist/php-v/germania-kg/permissions.svg)](https://packagist.org/packages/germania-kg/permissions)
+[![Build Status](https://img.shields.io/travis/GermaniaKG/Permissions.svg?label=Travis%20CI)](https://travis-ci.org/GermaniaKG/Permissions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/badges/build.png?b=master)](https://scrutinizer-ci.com/g/GermaniaKG/Permissions/build-status/master)
+
 
 
 ## Installation
@@ -62,20 +66,26 @@ print_r( $acl );
 
 
 
-## Development and Testing
 
-First, grab your clone:
+## Development
 
 ```bash
-$ git clone git@github.com:GermaniaKG/Permissions.git permissions
-$ cd permissions
+$ git clone https://github.com/GermaniaKG/Permissions.git
+$ cd Permissions
 $ composer install
-$ cp phpunit.xml.dist phpunit.xml
 ```
 
-Develop using `develop` branch, using [Git Flow](https://github.com/nvie/gitflow).   
-
 Setup MySQL tables *permissions* and *permissions_roles* as in `sql/install.sql.txt`. 
+
+## Unit tests
+
+Either copy `phpunit.xml.dist` to `phpunit.xml` and adapt to your needs, or leave as is. Run [PhpUnit](https://phpunit.de/) test or composer scripts like this:
+
+```bash
+$ composer test
+# or
+$ vendor/bin/phpunit
+```
 
 In `phpunit.xml`, edit the database credentials:
 
@@ -89,6 +99,4 @@ In `phpunit.xml`, edit the database credentials:
 </php>
 ```
 
-
 Go to project root and issue `phpunit`.
-

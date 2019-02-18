@@ -1,83 +1,46 @@
 # .scrutinizer.yml
+
 build:
 
     dependencies:
         before:
             - rm composer.lock
 
-    # ---------------------------------------------------------
-    # This makes no sense here as it will break tests with hhvm
-    # ---------------------------------------------------------
+    services:
+        mysql: 5.7
 
-    # tests:
-    #     override:
-    #         -
-    #             command: 'vendor/bin/phpunit --coverage-clover=coverage'
-    #             coverage:
-    #                 file: 'coverage'
-    #                 format: 'php-clover'
+    tests:
+        before:
+            - mysql -h 127.0.0.1 -u root -e 'create database test'
+
+        override:
+            -
+                command: 'vendor/bin/phpunit --coverage-clover=coverage'
+                coverage:
+                    file: 'coverage'
+                    format: 'php-clover'
 
     nodes:
-        # Common versions: 5.4, 5.5, 5.6, 7.1 or hhvm
-        php70:
-            environment:
-                php: 7.0.20
-            tests:
-                override:
-                    -
-                        command: 'vendor/bin/phpunit --coverage-clover=coverage'
-                        coverage:
-                            file: 'coverage'
-                            format: 'php-clover'
-
-        php71:
-            environment:
-                php: 7.1
-
-            tests:
-                override:
-                    -
-                        command: 'vendor/bin/phpunit --coverage-clover=coverage'
-                        coverage:
-                            file: 'coverage'
-                            format: 'php-clover'
-
-        php72:
-            environment:
-                php: 7.2
-
-            tests:
-                override:
-                    -
-                        command: 'vendor/bin/phpunit --coverage-clover=coverage'
-                        coverage:
-                            file: 'coverage'
-                            format: 'php-clover'
 
         php56:
             environment:
                 php: 5.6
 
-            tests:
-                override:
-                    -
-                        command: 'vendor/bin/phpunit --coverage-clover=coverage'
-                        coverage:
-                            file: 'coverage'
-                            format: 'php-clover'
+        php70:
+            environment:
+                php: 7.0
 
+        php71:
+            environment:
+                php: 7.1
 
-        # 2018-04-11: Scrutinizer fails on this.
-        #
-        #     "Could not double `PDOStatement` and implement interfaces:"
-        #
-        # Since I do not use hhvm anyway,
-        # I am not willing to fix this *right now*.
+        php72:
+            environment:
+                php: 7.2
 
-
-        # hhvm:
-        #     environment:
-        #         php: hhvm
+        php73:
+            environment:
+                php: 7.3
 
 
 checks:
@@ -88,3 +51,4 @@ checks:
 filter:
     excluded_paths:
         - tests/*
+
